@@ -1,0 +1,38 @@
+* {
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+body {
+  padding: 0;
+  margin: 0;
+}
+
+.candidates h2 {
+  font-size: 26px;
+  font-weight: 700;
+  border-top: 1px solid lightgray;
+  padding-top: 32px;
+}
+
+.candidates h5 {
+  font-size: 18px;
+  font-weight: 150;
+  text-transform: uppercase;
+  margin-top: 0px;
+  margin-bottom: 25px;
+  letter-spacing: 2px;
+}
+
+.candidates a {
+  color: #07a0c3;
+  font-weight: 200;
+  text-decoration: none;
+  border-bottom: 1px dashed #31afd4;
+  border-radius: 2px;
+}
+
+.candidates p {
+  text-align: justify;
+  padding-bottom: 16px;
+}

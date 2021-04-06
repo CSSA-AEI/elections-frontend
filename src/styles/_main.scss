@@ -1,0 +1,12 @@
+// Import assets.
+@import 'assets/fonts';
+@import 'assets/variables';
+
+// Import styling from components.
+@import 'components/nav';
+@import 'components/vote';
+@import 'components/votesuccess';
+@import 'components/candidates';
+
+// Import base
+@import 'assets/base';
