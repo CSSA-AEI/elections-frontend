@@ -1,19 +1,16 @@
 /* eslint-disable */
 const CandidatesData: any = {
-  PRES: [{ name: 'Laura Hornar', val: 'hornar' }],
-  FNCE: [{ name: 'Omer Abubaker', val: 'abubaker' }],
-  ACDM: [
-    { name: 'Satrajit Chatterjee', val: 'chatterjee' },
-    { name: 'Natalia Maximo', val: 'maximo' },
-  ],
-  // COMS: [{ name: 'Vacant', val: 'vacant' }],
-  INTR: [{ name: 'Elian Karpov', val: 'karpov' }],
-  EXTR: [{ name: 'Kian Salehi', val: 'salehi' }],
-  SOCL: [{ name: 'Sami Ben Moussa', val: 'benmoussa' }],
-  PHIL: [{ name: 'Shreya Langhe', val: 'langhe' }],
-  EQUT: [{ name: 'Tristan Pender', val: 'pender' }],
-  EXAF: [{ name: 'Arik Barenboim', val: 'barenboim' }],
-  INTE: [{ name: 'Anthony Mahanna', val: 'mahanna' }],
+  PRES: [{ name: 'First Last', val: 'anon' }],
+  FNCE: [{ name: 'First Last', val: 'anon' }],
+  ACDM: [{ name: 'First Last', val: 'anon' }],
+  COMS: [{ name: 'First Last', val: 'anon' }],
+  INTR: [{ name: 'First Last', val: 'anon' }],
+  EXTR: [{ name: 'First Last', val: 'anon' }],
+  SOCL: [{ name: 'First Last', val: 'anon' }],
+  PHIL: [{ name: 'First Last', val: 'anon' }],
+  EQUT: [{ name: 'First Last', val: 'anon' }],
+  EXAF: [{ name: 'First Last', val: 'anon' }],
+  INTE: [{ name: 'First Last', val: 'anon' }],
 };
 
 export default CandidatesData;
