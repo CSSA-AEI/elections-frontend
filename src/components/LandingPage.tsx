@@ -31,7 +31,7 @@ const LandingPage = (props: Props) => {
         <WhereToVoteOutlinedIcon fontSize="large" />
       </Avatar>
       <Box mt={4}>
-        <h2>{t('landingPage.voteEnd')}</h2>
+        <h2>{t('landingPage.voteStart')}</h2>
       </Box>
       <Box mt={4}>
         <p>

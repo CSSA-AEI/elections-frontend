@@ -57,7 +57,7 @@
     },
     "candidatesPage": {
       "subtitle": "You can access the platforms of the candidates running for the CSSA 20__-20__ term below.",
-      "anon": "(Justified) Platform here"
+      "last": "(Justified) Platform here"
     }
   }
 }
