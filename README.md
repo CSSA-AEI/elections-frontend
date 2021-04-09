@@ -35,3 +35,28 @@ Proxy Servery layer built with `Node js`, `Express`, and `Request`.
 - `yarn lint` - Scans the repo for any eslint violations
 - `yarn lint:fix` - Fixes eslint violations
 - `yarn prettier` - Reformats code to Prettier standards & fixes eslint violations
+
+## Getting Ready for the Next Election
+
+For any assistance with these steps, contact `amaha100@uottawa.ca`.
+
+1. Update the `candidates.ts` file under `src/assets/` to include all the candidates running for current term. Example:
+
+```javascript
+FNCE: [{ name: 'Omer Abubaker', val: 'abubaker' }]; // Where `val` is always the candidate's last name
+```
+
+2. Update the `candidatesPage` object under `en.json` and `fr.json` (`./src/locale`). For each candidate, add their platforms in that object, using their last name as the object key. Example:
+
+```javascript
+"candidatesPage": { // An example of what the en.json file would look like
+    "subtitle": "You can access the platforms of the candidates running for the CSSA 20__-20__ term below.",
+    "abubaker": "Omer's platform (English)"
+}
+```
+
+3. Add the image of each candidate under the `public/candidates/` directory. **The format must be JPG, and must be passed through the following image resizer first:** https://www.onlineresizeimage.com/instagram-profile-picture-resizer/. If the resizer says `image is too small`, then increase the pixel size first through this website: https://www.resizepixel.com/.
+
+4. Read over all the `en.json` and `fr.json` files and make sure that the election dates are properly included (no "\_\_\_" left anywhere).
+
+5. Verify that the environment variables are correctly set up in the Production Environment of the Heroku Application.
