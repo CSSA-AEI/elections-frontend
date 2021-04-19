@@ -1,17 +1,19 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-// Material-UI Components
+// Import Material-UI Components
 import LanguageIcon from '@material-ui/icons/Language';
 import { CssBaseline, Container, Button, Link as MUILink } from '@material-ui/core';
-// Translation & supported languages
+// Import useTranslation hook to allow for bilingualism
 import { useTranslation } from 'react-i18next';
 
+/**
+ * The Navigation Bar of the website holds the Logo, Title, and Vote / Candidate Buttons
+ */
 const NavBar = () => {
   const [t, i18n] = useTranslation();
-  const langArr = i18n.language.split('-');
-  const lang = langArr.length === 0 ? '?' : langArr[0].toUpperCase(); // Current language being used
+  const lang = i18n.language; // Fetch the current language being used ('en'/'fr')
 
-  // Fetch the user's unique voting sha256 value
+  // Fetch the user's unique voting sha256 value (part of their unique voting link)
   const path = window.location.pathname.split('/');
   const sha = path.length === 3 && (path[1] === 'vote' || path[1] === 'candidates') && path[2].length === 64 ? path[2] : undefined;
 
@@ -24,9 +26,9 @@ const NavBar = () => {
           style={{ position: 'fixed', right: 15, top: 5, color: 'rgba(0, 0, 0, 0.87)', fontSize: '18px' }}
           className={'text-capitalize font-weight-normal nav-item nav-link active'}
           component={Link}
-          onClick={() => i18n.changeLanguage(lang.toLowerCase() === 'en' ? 'fr' : 'en')}
+          onClick={() => i18n.changeLanguage(lang === 'en' ? 'fr' : 'en')}
         >
-          <LanguageIcon style={{ fontSize: 11 }} /> {lang.toLowerCase() === 'en' ? 'en' : 'fr'}
+          <LanguageIcon style={{ fontSize: 11 }} /> {lang === 'en' ? 'en' : 'fr'}
         </MUILink>
       </div>
       <Container component="div" maxWidth="sm">

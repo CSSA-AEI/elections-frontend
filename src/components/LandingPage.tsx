@@ -1,12 +1,17 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
-
+// Import MUI Components
 import WhereToVoteOutlinedIcon from '@material-ui/icons/WhereToVoteOutlined';
 import { Container, CssBaseline, Box, withStyles, Avatar, createStyles } from '@material-ui/core';
 import { default as MUILink } from '@material-ui/core/Link';
-
+// Import Props interface to define what this component can receive as props
 import { Props } from './Props';
 
+/**
+ * CreateStyles allows us to style MUI components
+ * This @var is passed as a paramater in the export of the component
+ * @see https://material-ui.com/styles/basics/
+ */
 const styles = () =>
   createStyles({
     avatar: {
@@ -20,6 +25,9 @@ const styles = () =>
     },
   });
 
+/**
+ * The LandingPage holds basic voting instructions, and the current election status (i.e not open, open, ended)
+ */
 const LandingPage = (props: Props) => {
   const [t] = useTranslation();
   const { classes } = props;
@@ -31,6 +39,7 @@ const LandingPage = (props: Props) => {
         <WhereToVoteOutlinedIcon fontSize="large" />
       </Avatar>
       <Box mt={4}>
+        {/** @see en.json & fr.json for different election status messages (voteStart, voteOpen, voteEnd) */}
         <h2>{t('landingPage.voteStart')}</h2>
       </Box>
       <Box mt={4}>

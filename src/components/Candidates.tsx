@@ -1,13 +1,18 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
-// Material-UI Components
-import EmojiPeopleOutlinedIcon from '@material-ui/icons/EmojiPeopleOutlined';
+// Import Material-UI Components
 import { Container, withStyles, createStyles, Box, CssBaseline, Avatar } from '@material-ui/core';
 import { default as MUILink } from '@material-ui/core/Link';
-// Props interface & Candidate info
+import EmojiPeopleOutlinedIcon from '@material-ui/icons/EmojiPeopleOutlined';
+// Import Props interface & Candidate info
 import { Props } from './Props';
 import CandidatesData from '../assets/candidates';
 
+/**
+ * CreateStyles allows us to style MUI components
+ * This @var is passed as a paramater in the export of the component
+ * @see https://material-ui.com/styles/basics/
+ */
 const styles = () =>
   createStyles({
     avatar: {
@@ -22,6 +27,10 @@ const styles = () =>
     },
   });
 
+/**
+ * The candidates page stores contact info, the candidate names, and their platforms
+ * @requires A valid candidates.ts file and valid candidate profile images
+ */
 const Candidates = (props: Props) => {
   const [t] = useTranslation();
   const { classes } = props;
@@ -50,6 +59,7 @@ const Candidates = (props: Props) => {
                 <Box key={data.val} mt={2}>
                   <h5>{data.name}</h5>
                   <Box mt={1}>
+                    {/** @requires Candidate profile images to be in JPG format */}
                     <img alt={data.name} key={data.name} className={classes.image} src={`/candidates/${data.val}.jpg`} />
                   </Box>
                   <Box mt={1}>

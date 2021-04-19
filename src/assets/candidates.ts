@@ -1,4 +1,18 @@
 /* eslint-disable */
+
+/**
+ * An object containing the candidates for the current election
+ * Must follow the format mentioned in the README (i.e {[name: 'First Name Last Name', val: 'Last Name']})
+ *
+ * @example
+ * FNCE: [{ name: 'Omer Abubaker', val: 'abubaker' }]
+ *
+ * @example
+ * FNCE: [
+ *  { name: 'Omer Abubaker', val: 'abubaker' },
+ *  { name: 'Sami Ben-Moussa', val: 'benmoussa' }
+ * ]
+ */
 const CandidatesData: any = {
   PRES: [{ name: 'First Last', val: 'last' }],
   FNCE: [{ name: 'First Last', val: 'last' }],
