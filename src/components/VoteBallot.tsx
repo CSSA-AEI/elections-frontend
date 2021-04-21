@@ -1,14 +1,18 @@
 import React, { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
-
-import BallotOutlinedIcon from '@material-ui/icons/BallotOutlined';
+// Import MUI Components
 import { Container, Snackbar, withStyles, createStyles, CssBaseline, Avatar } from '@material-ui/core';
 import MuiAlert from '@material-ui/lab/Alert';
-
+import BallotOutlinedIcon from '@material-ui/icons/BallotOutlined';
+// Import Props interface & Candidate Info
 import { Props } from './Props';
-
 import CandidatesData from '../assets/candidates';
 
+/**
+ * CreateStyles allows us to style MUI components
+ * This @var is passed as a paramater in the export of the component
+ * @see https://material-ui.com/styles/basics/
+ */
 const styles = () =>
   createStyles({
     avatar: {
@@ -19,15 +23,22 @@ const styles = () =>
     },
   });
 
+/**
+ * The VoteBallot component displays who the user voted for
+ * @requires A valid candidates.ts file
+ */
 const VoteBallot = (props: Props) => {
   const [t] = useTranslation();
   const { classes } = props;
-  const [displaySuccess, setDisplaySuccess] = useState(true);
+  const [displaySuccess, setDisplaySuccess] = useState(true); // Alerts the user of a successful vote
 
   useEffect(() => {
-    window.scrollTo(0, 0);
+    window.scrollTo(0, 0); // Scroll to top of page upon render
   }, []);
 
+  /**
+   * @function Closes the success alert popup after a period of time
+   */
   const handleAlertClose = () => {
     setDisplaySuccess(false);
   };

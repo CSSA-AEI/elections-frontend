@@ -10,6 +10,11 @@ import './styles/_main.scss';
 
 import * as Sentry from '@sentry/react';
 
+/**
+ * Renders the React DOM
+ * Uses I18nextProvider for website translation
+ * Uses Sentry.ErrorBoundary to fallback to an Error Page for any uncaught errors
+ */
 ReactDOM.render(
   <React.Fragment>
     <BrowserRouter>

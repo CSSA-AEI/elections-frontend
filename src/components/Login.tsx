@@ -1,8 +1,7 @@
 import React, { SyntheticEvent, useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
-import bcrypt from 'bcryptjs'; // For client-side hashing
-// Material-UI Components
-import VpnKeyOutlinedIcon from '@material-ui/icons/VpnKeyOutlined';
+import bcrypt from 'bcryptjs'; // Bcrypt is used for client-side hashing
+// Import MUI Components
 import {
   Avatar,
   Button,
@@ -17,17 +16,19 @@ import {
 } from '@material-ui/core';
 import { default as MUILink } from '@material-ui/core/Link';
 import MuiAlert from '@material-ui/lab/Alert';
-
+import VpnKeyOutlinedIcon from '@material-ui/icons/VpnKeyOutlined';
+// Import Props interface
 import { Props } from './Props';
 
-// Vote Interface will be returned upon login if new user
+// Import Vote component to redirect all new voters
 import Vote from './Vote';
-// Ballot Interface will be returned upon login if existing user
+// Import VoteBallot component to redirect all users who have already voted
 import VoteBallot from './VoteBallot';
 
 /**
- * Used to style the Material-UI components
- * Is passed as a paramater in the export of the Login component
+ * CreateStyles allows us to style MUI components
+ * This @var is passed as a paramater in the export of the component
+ * @see https://material-ui.com/styles/basics/
  */
 const styles = (theme: Theme) =>
   createStyles({

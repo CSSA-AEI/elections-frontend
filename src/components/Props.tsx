@@ -1,5 +1,5 @@
 /* eslint-disable */
-// All possible values currently found in a React component's (props)
+// All possible values currently found in a React component's props
 export interface Props {
   ballot?: any;
   voteTime?: string;

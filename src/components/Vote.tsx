@@ -1,7 +1,6 @@
 import React, { SyntheticEvent, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-
-import HowToVoteOutlinedIcon from '@material-ui/icons/HowToVoteOutlined';
+// Import Material-UI Components
 import {
   Snackbar,
   Button,
@@ -18,12 +17,18 @@ import {
   Avatar,
 } from '@material-ui/core';
 import MuiAlert from '@material-ui/lab/Alert';
-
+import HowToVoteOutlinedIcon from '@material-ui/icons/HowToVoteOutlined';
+// Import Props interface & Candidate info
 import { Props } from './Props';
 import CandidatesData from '../assets/candidates';
-// VoteBallot Interface will be returned upon voting
+// Import VoteBallot component to redirect to as soon as the user votes
 import VoteBallot from './VoteBallot';
 
+/**
+ * CreateStyles allows us to style MUI components
+ * This @var is passed as a paramater in the export of the component
+ * @see https://material-ui.com/styles/basics/
+ */
 const styles = () =>
   createStyles({
     avatar: {
@@ -36,16 +41,21 @@ const styles = () =>
     },
   });
 
+/**
+ * The Vote component holds the Ballot form that the user fills out
+ * @requires A valid candidates.ts file
+ */
 const Vote = (props: Props) => {
   const [t] = useTranslation();
   const { classes } = props;
 
-  const [voteTime, setVoteTime] = useState(undefined);
-  const [isSending, setIsSending] = useState(false);
-  const [isError, setIsError] = useState(false);
-  const [errorMessage, setErrorMessage] = useState('');
+  const [voteTime, setVoteTime] = useState(undefined); // The time of the user's ballot submission
+  const [isSending, setIsSending] = useState(false); // Set to true when the user submits
+  const [isError, setIsError] = useState(false); // Set to true if an error has occured
+  const [errorMessage, setErrorMessage] = useState(''); // A message displayed to the user upon error
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const [exec, setExec]: any = useState({
+    // Tracks the user's current ballot status
     PRES: '',
     FNCE: '',
     ACDM: '',
@@ -59,6 +69,9 @@ const Vote = (props: Props) => {
     INTE: '',
   });
 
+  /**
+   * @function Updates the status of the user's ballot whenever a RadioButton is selected
+   */
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     exec[e.target.name] = e.target.value;
     setExec({
@@ -66,10 +79,22 @@ const Vote = (props: Props) => {
     });
   };
 
+  /**
+   * @function Closes the Error popup after a period of time
+   */
   const handleAlertClose = () => {
     setIsError(false);
   };
 
+  /**
+   * @function Manages the Submission proccess of a ballot
+   * Makes a POST to /proxy/vote with the user's ballot, client hash, and sha values
+   * If 200, set the user's vote time and redirect to VoteBallot component
+   * If 201, simply redirect to VoteBallot component, as user has already voted
+   * If 401, display that user is unauthorized
+   * If 403, display that the voting period has ended
+   * If 429, request user to try again at a later time
+   */
   const handleClick = (e: SyntheticEvent) => {
     e.preventDefault();
     setIsSending(true);
@@ -118,12 +143,15 @@ const Vote = (props: Props) => {
       });
   };
 
+  /**
+   * @var Unlocks the submit button when the user has filled out their ballot
+   */
   const disableSubmit =
     !exec.PRES ||
     !exec.FNCE ||
     !exec.ACDM ||
     !exec.SOCL ||
-    // !exec.COMS ||
+    !exec.COMS ||
     !exec.INTR ||
     !exec.EXTR ||
     !exec.PHIL ||
