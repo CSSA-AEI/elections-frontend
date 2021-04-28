@@ -11,14 +11,14 @@
         "unauthorized": "Non autorisé",
         "alreadyVoted": "L'utilisateur a déjà voté le ",
         "tryagain": "Le serveur électoral ne répond pas - Désolé de l'inconvénient.\nOn va s'en occuper!",
-        "vote-has-not-started": "Début de vote: 31 mars à 10h",
+        "vote-has-not-started": "Début de vote: ___ ___ à ___",
         "vote-has-ended": "La période de vote est terminée",
         "other": "Erreur de connexion, veuillez réessayer",
         "warning": "Woah, qu'est-ce qui s'est passé? On va s'en occuper..."
       }
     },
     "landingPage": {
-      "voteStart": "La période de vote ouvre le ____ à _____!",
+      "voteStart": "La période de vote ouvre le ___ à ___!",
       "voteOpen": "La période de vote est ouverte!",
       "voteEnd": "La période de vote est terminée, merci à tous!",
       "instructionsP1": "Si vous êtes un(e) étudiant(e) en Informatique, vous recevrez un courriel de notre part détaillant les instructions de vote pour cette élection, ainsi qu’un lien pour voter.",
@@ -56,7 +56,7 @@
       "INTE": "VP Informatique"
     },
     "candidatesPage": {
-      "subtitle": "Vous pouvez accéder aux plateformes des candidats pour le mandat 20__-20__ ci-dessous.",
+      "subtitle": "Vous pouvez accéder aux plateformes des candidats pour le mandat ___-___ ci-dessous.",
       "last": "(Justified) French Platform here"
     }
   }
