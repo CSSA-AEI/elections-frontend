@@ -6,7 +6,6 @@ import MuiAlert from '@material-ui/lab/Alert';
 import BallotOutlinedIcon from '@material-ui/icons/BallotOutlined';
 // Import Props interface & Candidate Info
 import { Props } from './Props';
-import CandidatesData from '../assets/candidates';
 
 /**
  * CreateStyles allows us to style MUI components
@@ -31,9 +30,16 @@ const VoteBallot = (props: Props) => {
   const [t] = useTranslation();
   const { classes } = props;
   const [displaySuccess, setDisplaySuccess] = useState(true); // Alerts the user of a successful vote
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const [candidatesData, setCandidatesData]: any = useState([]);
 
   useEffect(() => {
     window.scrollTo(0, 0); // Scroll to top of page upon render
+    fetch('/proxy/vote/candidates')
+      .then(data => data.json())
+      .then(res => {
+        if (res.status === 200) setCandidatesData(res.data);
+      });
   }, []);
 
   /**
@@ -55,15 +61,16 @@ const VoteBallot = (props: Props) => {
             <h3>
               {t('votesuccessPage.voteDate')} {props.voteTime}
             </h3>
-            {Object.keys(CandidatesData).map((key: string) => (
-              <div key={key}>
-                <b>{t(`positionName.${key}`)}</b>
-                <p>
-                  {CandidatesData[key].filter((elem: { name: string; val: string }) => elem.val === props.ballot[key])[0]?.name ||
-                    t('votePage.abstain')}
-                </p>
-              </div>
-            ))}
+            {candidatesData.length !== 0 &&
+              Object.keys(candidatesData).map((key: string) => (
+                <div key={key}>
+                  <b>{t(`positionName.${key}`)}</b>
+                  <p>
+                    {candidatesData[key].filter((elem: { name: string; val: string }) => elem.val === props.ballot[key])[0]?.name ||
+                      t('votePage.abstain')}
+                  </p>
+                </div>
+              ))}
             <h3>{t('votesuccessPage.thankYou')}</h3>
           </div>
         </div>

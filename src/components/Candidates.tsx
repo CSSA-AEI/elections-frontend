@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 // Import Material-UI Components
 import { Container, withStyles, createStyles, Box, CssBaseline, Avatar } from '@material-ui/core';
@@ -6,7 +6,6 @@ import { default as MUILink } from '@material-ui/core/Link';
 import EmojiPeopleOutlinedIcon from '@material-ui/icons/EmojiPeopleOutlined';
 // Import Props interface & Candidate info
 import { Props } from './Props';
-import CandidatesData from '../assets/candidates';
 
 /**
  * CreateStyles allows us to style MUI components
@@ -32,8 +31,18 @@ const styles = () =>
  * @requires A valid candidates.ts file and valid candidate profile images
  */
 const Candidates = (props: Props) => {
-  const [t] = useTranslation();
   const { classes } = props;
+  const [t] = useTranslation();
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const [candidatesData, setCandidatesData]: any = useState([]);
+
+  useEffect(() => {
+    fetch('/proxy/vote/candidates')
+      .then(data => data.json())
+      .then(res => {
+        if (res.status === 200) setCandidatesData(res.data);
+      });
+  }, []);
 
   return (
     <Container component="main" maxWidth="md">
@@ -50,27 +59,29 @@ const Candidates = (props: Props) => {
           </MUILink>
         </p>
       </Box>
-      <div className="candidates">
-        {Object.keys(CandidatesData).map((key: string) => (
-          <div id={key} key={key}>
-            <Box mt={3}>
-              <h2>{t(`positionName.${key}`)}</h2>
-              {CandidatesData[key].map((data: { name: string; val: string }) => (
-                <Box key={data.val} mt={2}>
-                  <h5>{data.name}</h5>
-                  <Box mt={1}>
-                    {/** @requires Candidate profile images to be in JPG format */}
-                    <img alt={data.name} key={data.name} className={classes.image} src={`/candidates/${data.val}.jpg`} />
+      {candidatesData.length !== 0 && (
+        <div className="candidates">
+          {Object.keys(candidatesData).map((key: string) => (
+            <div id={key} key={key}>
+              <Box mt={3}>
+                <h2>{t(`positionName.${key}`)}</h2>
+                {candidatesData[key].map((data: { name: string; val: string }) => (
+                  <Box key={data.val} mt={2}>
+                    <h5>{data.name}</h5>
+                    <Box mt={1}>
+                      {/** @requires Candidate profile images to be in JPG format */}
+                      <img alt={data.name} key={data.name} className={classes.image} src={`/candidates/${data.val}.jpg`} />
+                    </Box>
+                    <Box mt={1}>
+                      <p>{t(`candidatesPage.${data.val}`)}</p>
+                    </Box>
                   </Box>
-                  <Box mt={1}>
-                    <p>{t(`candidatesPage.${data.val}`)}</p>
-                  </Box>
-                </Box>
-              ))}
-            </Box>
-          </div>
-        ))}
-      </div>
+                ))}
+              </Box>
+            </div>
+          ))}
+        </div>
+      )}
     </Container>
   );
 };

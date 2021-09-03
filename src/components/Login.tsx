@@ -80,7 +80,7 @@ const Login = (props: Props) => {
     if (!sha || sha.length !== 64) {
       props.history.push('/');
     } else {
-      fetch('/proxy/salt', {
+      fetch('/proxy/user/salt', {
         method: 'POST',
         cache: 'force-cache',
         body: JSON.stringify({ sha }),
@@ -129,7 +129,7 @@ const Login = (props: Props) => {
 
     bcrypt.hash(id, salt, function (err, hash) {
       setIsSending(true);
-      fetch(`/proxy/login`, {
+      fetch(`/proxy/user/login`, {
         method: 'POST',
         body: JSON.stringify({ hash, sha }),
         headers: {

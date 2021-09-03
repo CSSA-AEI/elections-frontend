@@ -19,15 +19,15 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, "build")));
 
-app.route('/proxy/:route')
+app.route('/proxy/:path/:route')
     .get((req, res) => {
         request({
-            url: process.env.API_PROXY_ROUTE + req.params.route,
+            url: process.env.API_PROXY_ROUTE + req.params.path + '/' + req.params.route,
         }).pipe(res);
     })
     .post((req, res) => {
         const options = { 
-            url: process.env.API_PROXY_ROUTE + req.params.route,
+            url: process.env.API_PROXY_ROUTE + req.params.path + '/' + req.params.route,
             body: JSON.stringify(req.body),
             method: 'POST',
             headers: {
