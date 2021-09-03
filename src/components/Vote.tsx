@@ -25,7 +25,7 @@ import VoteBallot from './VoteBallot';
 
 /**
  * CreateStyles allows us to style MUI components
- * This @var is passed as a paramater in the export of the component
+ * The @var styles passed as a paramater in the export of the component
  * @see https://material-ui.com/styles/basics/
  */
 const styles = () =>
@@ -42,7 +42,7 @@ const styles = () =>
 
 /**
  * The Vote component holds the Ballot form that the user fills out
- * @requires A valid candidates.ts file
+ * @requires candidatesData from backend
  */
 const Vote = (props: Props) => {
   const [t] = useTranslation();
@@ -80,7 +80,7 @@ const Vote = (props: Props) => {
   }, []);
 
   /**
-   * @function Updates the status of the user's ballot whenever a RadioButton is selected
+   * @function handleChange() Updates the status of the user's ballot whenever a RadioButton is selected
    */
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     exec[e.target.name] = e.target.value;
@@ -90,14 +90,14 @@ const Vote = (props: Props) => {
   };
 
   /**
-   * @function Closes the Error popup after a period of time
+   * @function handleAlertClose() Closes the Error popup after a period of time
    */
   const handleAlertClose = () => {
     setIsError(false);
   };
 
   /**
-   * @function Manages the Submission proccess of a ballot
+   * @function handleClick() Manages the Submission proccess of a ballot
    * Makes a POST to /proxy/vote with the user's ballot, client hash, and sha values
    * If 200, set the user's vote time and redirect to VoteBallot component
    * If 201, simply redirect to VoteBallot component, as user has already voted
@@ -154,7 +154,7 @@ const Vote = (props: Props) => {
   };
 
   /**
-   * @var Unlocks the submit button when the user has filled out their ballot
+   * @var disableSubmit Unlocks the submit button when the user has filled out their ballot
    */
   const disableSubmit =
     !exec.PRES ||

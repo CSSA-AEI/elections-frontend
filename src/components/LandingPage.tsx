@@ -9,7 +9,7 @@ import { Props } from './Props';
 
 /**
  * CreateStyles allows us to style MUI components
- * This @var is passed as a paramater in the export of the component
+ * The @var styles is passed as a paramater in the export of the component
  * @see https://material-ui.com/styles/basics/
  */
 const styles = () =>
@@ -39,7 +39,7 @@ const LandingPage = (props: Props) => {
         <WhereToVoteOutlinedIcon fontSize="large" />
       </Avatar>
       <Box mt={4}>
-        {/** @see en.json & fr.json for different election status messages (voteStart, voteOpen, voteEnd) */}
+        {/** @see (en||fr).json for different election status messages (voteStart, voteOpen, voteEnd) */}
         <h2>{t('landingPage.voteStart')}</h2>
       </Box>
       <Box mt={4}>

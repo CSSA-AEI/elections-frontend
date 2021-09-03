@@ -9,7 +9,7 @@ import { Props } from './Props';
 
 /**
  * CreateStyles allows us to style MUI components
- * This @var is passed as a paramater in the export of the component
+ * The @var styles is passed as a paramater in the export of the component
  * @see https://material-ui.com/styles/basics/
  */
 const styles = () =>
@@ -28,7 +28,8 @@ const styles = () =>
 
 /**
  * The candidates page stores contact info, the candidate names, and their platforms
- * @requires A valid candidates.ts file and valid candidate profile images
+ * @requires candidatesData from backend
+ * @requires images from elections-frontend/public/candidates
  */
 const Candidates = (props: Props) => {
   const { classes } = props;
@@ -69,7 +70,7 @@ const Candidates = (props: Props) => {
                   <Box key={data.val} mt={2}>
                     <h5>{data.name}</h5>
                     <Box mt={1}>
-                      {/** @requires Candidate profile images to be in JPG format */}
+                      {/** @requires images to be in JPG format */}
                       <img alt={data.name} key={data.name} className={classes.image} src={`/candidates/${data.val}.jpg`} />
                     </Box>
                     <Box mt={1}>

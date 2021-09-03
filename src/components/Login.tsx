@@ -27,7 +27,7 @@ import VoteBallot from './VoteBallot';
 
 /**
  * CreateStyles allows us to style MUI components
- * This @var is passed as a paramater in the export of the component
+ * The @var styles passed as a paramater in the export of the component
  * @see https://material-ui.com/styles/basics/
  */
 const styles = (theme: Theme) =>

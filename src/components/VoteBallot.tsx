@@ -9,7 +9,7 @@ import { Props } from './Props';
 
 /**
  * CreateStyles allows us to style MUI components
- * This @var is passed as a paramater in the export of the component
+ * The @var styles passed as a paramater in the export of the component
  * @see https://material-ui.com/styles/basics/
  */
 const styles = () =>
@@ -24,7 +24,7 @@ const styles = () =>
 
 /**
  * The VoteBallot component displays who the user voted for
- * @requires A valid candidates.ts file
+ * @requires candidatesData from backend
  */
 const VoteBallot = (props: Props) => {
   const [t] = useTranslation();
@@ -43,7 +43,7 @@ const VoteBallot = (props: Props) => {
   }, []);
 
   /**
-   * @function Closes the success alert popup after a period of time
+   * @function handleAlertClose() Closes the success alert popup after a period of time
    */
   const handleAlertClose = () => {
     setDisplaySuccess(false);
