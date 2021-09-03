@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 // Import MUI Components
-import { Container, Snackbar, withStyles, createStyles, CssBaseline, Avatar } from '@material-ui/core';
+import { Container, Snackbar, withStyles, createStyles, CssBaseline, Avatar, CircularProgress } from '@material-ui/core';
 import MuiAlert from '@material-ui/lab/Alert';
 import BallotOutlinedIcon from '@material-ui/icons/BallotOutlined';
 // Import Props interface & Candidate Info
@@ -61,7 +61,8 @@ const VoteBallot = (props: Props) => {
             <h3>
               {t('votesuccessPage.voteDate')} {props.voteTime}
             </h3>
-            {candidatesData.length !== 0 &&
+            {Object.keys(candidatesData).length === 0 && <CircularProgress />}
+            {Object.keys(candidatesData).length !== 0 &&
               Object.keys(candidatesData).map((key: string) => (
                 <div key={key}>
                   <b>{t(`positionName.${key}`)}</b>

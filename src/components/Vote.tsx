@@ -119,9 +119,7 @@ const Vote = (props: Props) => {
         'Content-Type': 'application/json',
       },
     })
-      .then(data => {
-        return data.json();
-      })
+      .then(data => data.json())
       .then(res => {
         if (res.status === 200) {
           setVoteTime(res.voteTime);
@@ -179,7 +177,8 @@ const Vote = (props: Props) => {
             <Avatar className={classes.avatar}>
               <HowToVoteOutlinedIcon fontSize="large" />
             </Avatar>
-            {candidatesData.length !== 0 && (
+            {Object.keys(candidatesData).length === 0 && <CircularProgress />}
+            {Object.keys(candidatesData).length !== 0 && (
               <FormControl key="fControl" component="fieldset">
                 {Object.keys(exec).map((key: string) => (
                   <Box key={key} mt={3}>

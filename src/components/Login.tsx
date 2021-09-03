@@ -89,9 +89,7 @@ const Login = (props: Props) => {
           Accept: 'application/json',
         },
       })
-        .then(data => {
-          return data.json();
-        })
+        .then(data => data.json())
         .then(res => {
           if (res.status === 200) setSalt(res.message);
           else if (res.status === 418) props.history.push('/');
@@ -137,9 +135,7 @@ const Login = (props: Props) => {
           Accept: 'application/json',
         },
       })
-        .then(data => {
-          return data.json();
-        })
+        .then(data => data.json())
         .then(res => {
           if (res.status === 200) {
             setHash(hash);

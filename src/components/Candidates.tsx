@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 // Import Material-UI Components
-import { Container, withStyles, createStyles, Box, CssBaseline, Avatar } from '@material-ui/core';
+import { Container, withStyles, createStyles, Box, CssBaseline, Avatar, CircularProgress } from '@material-ui/core';
 import { default as MUILink } from '@material-ui/core/Link';
 import EmojiPeopleOutlinedIcon from '@material-ui/icons/EmojiPeopleOutlined';
 // Import Props interface & Candidate info
@@ -60,7 +60,8 @@ const Candidates = (props: Props) => {
           </MUILink>
         </p>
       </Box>
-      {candidatesData.length !== 0 && (
+      {Object.keys(candidatesData).length === 0 && <CircularProgress />}
+      {Object.keys(candidatesData).length !== 0 && (
         <div className="candidates">
           {Object.keys(candidatesData).map((key: string) => (
             <div id={key} key={key}>
