@@ -52,8 +52,7 @@
     "develop": "concurrently \"nodemon server.js\" \"yarn run react:start\"",
     "heroku-postbuild": "yarn install && yarn run build",
     "prettier": "prettier --write src/**/*.ts{,x}",
-    "lint": "tsc --noEmit && eslint src/**/*.ts{,x}",
-    "lint:fix": "tsc --noEmit && eslint --fix src/**/*.ts{,x}"
+    "lint": "tsc --noEmit && eslint --fix src/**/*.ts{,x}"
   },
   "eslintConfig": {
     "extends": "react-app"

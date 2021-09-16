@@ -27,7 +27,7 @@ import VoteBallot from './VoteBallot';
 
 /**
  * CreateStyles allows us to style MUI components
- * This @var is passed as a paramater in the export of the component
+ * The @var styles passed as a paramater in the export of the component
  * @see https://material-ui.com/styles/basics/
  */
 const styles = (theme: Theme) =>
@@ -80,7 +80,7 @@ const Login = (props: Props) => {
     if (!sha || sha.length !== 64) {
       props.history.push('/');
     } else {
-      fetch('/proxy/salt', {
+      fetch('/proxy/user/salt', {
         method: 'POST',
         cache: 'force-cache',
         body: JSON.stringify({ sha }),
@@ -89,9 +89,7 @@ const Login = (props: Props) => {
           Accept: 'application/json',
         },
       })
-        .then(data => {
-          return data.json();
-        })
+        .then(data => data.json())
         .then(res => {
           if (res.status === 200) setSalt(res.message);
           else if (res.status === 418) props.history.push('/');
@@ -129,7 +127,7 @@ const Login = (props: Props) => {
 
     bcrypt.hash(id, salt, function (err, hash) {
       setIsSending(true);
-      fetch(`/proxy/login`, {
+      fetch(`/proxy/user/login`, {
         method: 'POST',
         body: JSON.stringify({ hash, sha }),
         headers: {
@@ -137,9 +135,7 @@ const Login = (props: Props) => {
           Accept: 'application/json',
         },
       })
-        .then(data => {
-          return data.json();
-        })
+        .then(data => data.json())
         .then(res => {
           if (res.status === 200) {
             setHash(hash);

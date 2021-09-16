@@ -1,16 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 // Import MUI Components
-import { Container, Snackbar, withStyles, createStyles, CssBaseline, Avatar } from '@material-ui/core';
+import { Container, Snackbar, withStyles, createStyles, CssBaseline, Avatar, CircularProgress } from '@material-ui/core';
 import MuiAlert from '@material-ui/lab/Alert';
 import BallotOutlinedIcon from '@material-ui/icons/BallotOutlined';
 // Import Props interface & Candidate Info
 import { Props } from './Props';
-import CandidatesData from '../assets/candidates';
 
 /**
  * CreateStyles allows us to style MUI components
- * This @var is passed as a paramater in the export of the component
+ * The @var styles passed as a paramater in the export of the component
  * @see https://material-ui.com/styles/basics/
  */
 const styles = () =>
@@ -25,19 +24,26 @@ const styles = () =>
 
 /**
  * The VoteBallot component displays who the user voted for
- * @requires A valid candidates.ts file
+ * @requires candidatesData from backend
  */
 const VoteBallot = (props: Props) => {
   const [t] = useTranslation();
   const { classes } = props;
   const [displaySuccess, setDisplaySuccess] = useState(true); // Alerts the user of a successful vote
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const [candidatesData, setCandidatesData]: any = useState([]);
 
   useEffect(() => {
     window.scrollTo(0, 0); // Scroll to top of page upon render
+    fetch('/proxy/vote/candidates')
+      .then(data => data.json())
+      .then(res => {
+        if (res.status === 200) setCandidatesData(res.data);
+      });
   }, []);
 
   /**
-   * @function Closes the success alert popup after a period of time
+   * @function handleAlertClose() Closes the success alert popup after a period of time
    */
   const handleAlertClose = () => {
     setDisplaySuccess(false);
@@ -55,15 +61,17 @@ const VoteBallot = (props: Props) => {
             <h3>
               {t('votesuccessPage.voteDate')} {props.voteTime}
             </h3>
-            {Object.keys(CandidatesData).map((key: string) => (
-              <div key={key}>
-                <b>{t(`positionName.${key}`)}</b>
-                <p>
-                  {CandidatesData[key].filter((elem: { name: string; val: string }) => elem.val === props.ballot[key])[0]?.name ||
-                    t('votePage.abstain')}
-                </p>
-              </div>
-            ))}
+            {Object.keys(candidatesData).length === 0 && <CircularProgress />}
+            {Object.keys(candidatesData).length !== 0 &&
+              Object.keys(candidatesData).map((key: string) => (
+                <div key={key}>
+                  <b>{t(`positionName.${key}`)}</b>
+                  <p>
+                    {candidatesData[key].filter((elem: { name: string; val: string }) => elem.val === props.ballot[key])[0]?.name ||
+                      t('votePage.abstain')}
+                  </p>
+                </div>
+              ))}
             <h3>{t('votesuccessPage.thankYou')}</h3>
           </div>
         </div>

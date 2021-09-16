@@ -40,23 +40,30 @@ Proxy Servery layer built with `Node js`, `Express`, and `Request`.
 
 For any assistance, contact `amaha100@uottawa.ca`.
 
-1. Update the `candidates.ts` file under `src/assets/` to include all the candidates running for the current term. Example:
+### [elections-backend](https://github.com/CSSA-AEI/elections-backend)
+
+1.  Update `elections-backend/assets/candidates.ts` to include all the candidates running for the current term. Example:
 
 ```javascript
-FNCE: [{ name: 'Omer Abubaker', val: 'abubaker' }]; // Where `val` is always the candidate's last name
+FNCE: [{ name: 'Omer Abubaker', val: 'abubaker' }]; // `val` is always the candidate's last name
 ```
 
-2. Update the `candidatesPage` section in the `en.json` & `fr.json` files (under `./src/locale`). For each candidate, add their platforms in that object, using their last name as the object key. Example:
+2. Verify that the environment variables are correctly set up in the Production & Development Environment of the [elections-backend Heroku Pipeline](https://dashboard.heroku.com/pipelines/6212bfb6-1301-4304-9a8d-76dba1c4de6f).
+
+### [elections-frontend](https://github.com/CSSA-AEI/elections-frontend)
+
+1. Update the `candidatesPage` section in `elections-frontend/src/locale/en.json` and `elections-frontend/src/locale/fr.json`. For each candidate, add their platforms in that object, using their last name as the object key. Example:
 
 ```javascript
 "candidatesPage": { // An example of what the en.json file would look like
     "subtitle": "You can access the platforms of the candidates running for the CSSA 20__-20__ term below.",
-    "abubaker": "Omer's english platform \n This is a new line"
+    "abubaker": "Omer's english platform \n This is a new line",
+    "mahanna": "Anthony's english platform"
 }
 ```
 
-3. Add the image of each candidate under the `public/candidates/` directory. **The format must be JPG, and must be passed through the following image resizer first:** https://www.onlineresizeimage.com/instagram-profile-picture-resizer/. If the resizer says `image is too small`, then increase the pixel size first through this website: https://www.resizepixel.com/.
+2. Add the image of each candidate under the `public/candidates/` directory. **The format must be JPG, and must be passed through the following image resizer first:** https://www.onlineresizeimage.com/instagram-profile-picture-resizer/. If the resizer says `image is too small`, then increase the pixel size first through this website: https://www.resizepixel.com/.
 
-4. Read over all the `en.json` and `fr.json` files and make sure that the election dates are properly included (**no "\_\_\_" underscores left anywhere**).
+3. Read over all the `en.json` and `fr.json` files and make sure that the election dates are properly included (**no "\_\_\_" underscores left anywhere**).
 
-5. Verify that the environment variables are correctly set up in the Production Environment of the Heroku Application.
+4. Verify that the environment variables are correctly set up in the Production & Development Environments of the [elections-frontend Heroku Pipeline](https://dashboard.heroku.com/pipelines/6a561515-c587-4924-a53d-c787f75db2ce).

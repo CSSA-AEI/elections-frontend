@@ -1,4 +1,4 @@
-import React, { SyntheticEvent, useState } from 'react';
+import React, { SyntheticEvent, useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 // Import Material-UI Components
 import {
@@ -18,15 +18,14 @@ import {
 } from '@material-ui/core';
 import MuiAlert from '@material-ui/lab/Alert';
 import HowToVoteOutlinedIcon from '@material-ui/icons/HowToVoteOutlined';
-// Import Props interface & Candidate info
+// Import Props interface
 import { Props } from './Props';
-import CandidatesData from '../assets/candidates';
 // Import VoteBallot component to redirect to as soon as the user votes
 import VoteBallot from './VoteBallot';
 
 /**
  * CreateStyles allows us to style MUI components
- * This @var is passed as a paramater in the export of the component
+ * The @var styles passed as a paramater in the export of the component
  * @see https://material-ui.com/styles/basics/
  */
 const styles = () =>
@@ -43,7 +42,7 @@ const styles = () =>
 
 /**
  * The Vote component holds the Ballot form that the user fills out
- * @requires A valid candidates.ts file
+ * @requires candidatesData from backend
  */
 const Vote = (props: Props) => {
   const [t] = useTranslation();
@@ -53,6 +52,9 @@ const Vote = (props: Props) => {
   const [isSending, setIsSending] = useState(false); // Set to true when the user submits
   const [isError, setIsError] = useState(false); // Set to true if an error has occured
   const [errorMessage, setErrorMessage] = useState(''); // A message displayed to the user upon error
+
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const [candidatesData, setCandidatesData]: any = useState([]);
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const [exec, setExec]: any = useState({
     // Tracks the user's current ballot status
@@ -69,8 +71,16 @@ const Vote = (props: Props) => {
     INTE: '',
   });
 
+  useEffect(() => {
+    fetch('/proxy/vote/candidates')
+      .then(data => data.json())
+      .then(res => {
+        if (res.status === 200) setCandidatesData(res.data);
+      });
+  }, []);
+
   /**
-   * @function Updates the status of the user's ballot whenever a RadioButton is selected
+   * @function handleChange() Updates the status of the user's ballot whenever a RadioButton is selected
    */
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     exec[e.target.name] = e.target.value;
@@ -80,14 +90,14 @@ const Vote = (props: Props) => {
   };
 
   /**
-   * @function Closes the Error popup after a period of time
+   * @function handleAlertClose() Closes the Error popup after a period of time
    */
   const handleAlertClose = () => {
     setIsError(false);
   };
 
   /**
-   * @function Manages the Submission proccess of a ballot
+   * @function handleClick() Manages the Submission proccess of a ballot
    * Makes a POST to /proxy/vote with the user's ballot, client hash, and sha values
    * If 200, set the user's vote time and redirect to VoteBallot component
    * If 201, simply redirect to VoteBallot component, as user has already voted
@@ -98,7 +108,7 @@ const Vote = (props: Props) => {
   const handleClick = (e: SyntheticEvent) => {
     e.preventDefault();
     setIsSending(true);
-    fetch('/proxy/vote', {
+    fetch('/proxy/vote/submit', {
       method: 'POST',
       body: JSON.stringify({
         hash: props.hash,
@@ -109,9 +119,7 @@ const Vote = (props: Props) => {
         'Content-Type': 'application/json',
       },
     })
-      .then(data => {
-        return data.json();
-      })
+      .then(data => data.json())
       .then(res => {
         if (res.status === 200) {
           setVoteTime(res.voteTime);
@@ -144,7 +152,7 @@ const Vote = (props: Props) => {
   };
 
   /**
-   * @var Unlocks the submit button when the user has filled out their ballot
+   * @var disableSubmit Unlocks the submit button when the user has filled out their ballot
    */
   const disableSubmit =
     !exec.PRES ||
@@ -169,19 +177,22 @@ const Vote = (props: Props) => {
             <Avatar className={classes.avatar}>
               <HowToVoteOutlinedIcon fontSize="large" />
             </Avatar>
-            <FormControl key="fControl" component="fieldset">
-              {Object.keys(exec).map((key: string) => (
-                <Box key={key} mt={3}>
-                  <h3>{t(`positionName.${key}`)}</h3>
-                  <RadioGroup aria-label={key} name={key} value={exec[key]} onChange={handleChange}>
-                    {CandidatesData[key].map((data: { name: string; val: string }) => (
-                      <FormControlLabel key={data.name} value={data.val} control={<Radio />} label={<p>{data.name}</p>} />
-                    ))}
-                    <FormControlLabel key="abstain" value="abstain" control={<Radio />} label={<p>{t('votePage.abstain')}</p>} />
-                  </RadioGroup>
-                </Box>
-              ))}
-            </FormControl>
+            {Object.keys(candidatesData).length === 0 && <CircularProgress />}
+            {Object.keys(candidatesData).length !== 0 && (
+              <FormControl key="fControl" component="fieldset">
+                {Object.keys(exec).map((key: string) => (
+                  <Box key={key} mt={3}>
+                    <h3>{t(`positionName.${key}`)}</h3>
+                    <RadioGroup aria-label={key} name={key} value={exec[key]} onChange={handleChange}>
+                      {candidatesData[key].map((data: { name: string; val: string }) => (
+                        <FormControlLabel key={data.name} value={data.val} control={<Radio />} label={<p>{data.name}</p>} />
+                      ))}
+                      <FormControlLabel key="abstain" value="abstain" control={<Radio />} label={<p>{t('votePage.abstain')}</p>} />
+                    </RadioGroup>
+                  </Box>
+                ))}
+              </FormControl>
+            )}
           </Container>
           <Box mt={4}>
             {!isSending && (
