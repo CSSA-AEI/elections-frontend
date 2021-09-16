@@ -1,3 +1,7 @@
+[![dependencies Status](https://status.david-dm.org/gh/cssa-aei/elections-frontend.svg)](https://david-dm.org/cssa-aei/elections-frontend)
+[![devDependencies Status](https://status.david-dm.org/gh/cssa-aei/elections-frontend.svg?type=dev)](https://david-dm.org/cssa-aei/elections-frontend?type=dev)
+[![peerDependencies Status](https://status.david-dm.org/gh/cssa-aei/elections-frontend.svg?type=peer)](https://david-dm.org/cssa-aei/elections-frontend?type=peer)
+
 # Elections Frontend
 
 Client layer built with `React TSX`, `Material-UI`, and `i18n`.
