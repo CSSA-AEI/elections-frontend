@@ -54,7 +54,7 @@ const styles = (theme: Theme) =>
 
 const Login = (props: Props) => {
   const [t] = useTranslation(); // For i18n translation
-  const { classes } = props; // For withStyles styling of Material-UI
+  const { classes, ...other } = props; // For withStyles styling of Material-UI
   const sha = props.match.params.sha; // The unique voting sha256 in hex format
 
   const [id, setID] = useState(''); // The student ID input
@@ -176,9 +176,9 @@ const Login = (props: Props) => {
 
   return (
     <div>
-      {displayVote && <Vote {...props} hash={hash} sha={sha} />}
+      {displayVote && <Vote {...other} hash={hash} sha={sha} />}
 
-      {displayBallot && <VoteBallot {...props} voteTime={voteTime} ballot={ballot} />}
+      {displayBallot && <VoteBallot {...other} voteTime={voteTime} ballot={ballot} />}
 
       {!displayVote && !displayBallot && (
         <Container component="main" maxWidth="xs">
