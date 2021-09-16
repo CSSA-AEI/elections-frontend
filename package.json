@@ -9,7 +9,7 @@
   "dependencies": {
     "@material-ui/core": "^4.11.2",
     "@material-ui/icons": "^4.11.2",
-    "@material-ui/lab": "^5.0.0-alpha.44",
+    "@material-ui/lab": "^4.0.0-alpha.57",
     "@sentry/react": "^6.2.2",
     "@types/bcryptjs": "^2.4.2",
     "@types/react": "^17.0.0",
