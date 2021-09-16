@@ -1,8 +1,6 @@
 // Require environment variables for local development
 if (process.env.NODE_ENV !== 'production') {
     require('dotenv').config();
-} else {
-    require('newrelic');
 }
 
 // Define required libraries.
