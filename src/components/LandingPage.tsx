@@ -31,7 +31,7 @@ const styles = () =>
 const LandingPage = (props: Props) => {
   const [t] = useTranslation();
   const { classes } = props;
-  const [votingStatus, setVotingStatus]: any = useState(undefined);
+  const [votingStatus, setVotingStatus] = useState('');
 
   useEffect(() => {
     fetch('/proxy/vote/status')
@@ -49,7 +49,7 @@ const LandingPage = (props: Props) => {
       </Avatar>
       <Box mt={4}>
         {/** @see (en||fr).json for different election status messages (voteStart, voteOpen, voteEnd) */}
-        {votingStatus && <h2>{t(`landingPage.${votingStatus}`)}</h2>}
+        {votingStatus !== '' && <h2>{t(`landingPage.${votingStatus}`)}</h2>}
       </Box>
       <Box mt={4}>
         <p>
