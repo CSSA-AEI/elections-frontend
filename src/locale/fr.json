@@ -11,14 +11,14 @@
         "unauthorized": "Non autorisé",
         "alreadyVoted": "L'utilisateur a déjà voté le ",
         "tryagain": "Le serveur électoral ne répond pas - Désolé de l'inconvénient.\nOn va s'en occuper!",
-        "vote-has-not-started": "Début de vote: ___ ___ à ___",
+        "vote-has-not-started": "Début de vote: 29 Octobre à 9h",
         "vote-has-ended": "La période de vote est terminée",
         "other": "Erreur de connexion, veuillez réessayer",
         "warning": "Woah, qu'est-ce qui s'est passé? On va s'en occuper..."
       }
     },
     "landingPage": {
-      "voteStart": "La période de vote ouvre le ___ à ___!",
+      "voteStart": "La période de vote ouvre le 29 Octobre à 9h!",
       "voteOpen": "La période de vote est ouverte!",
       "voteEnd": "La période de vote est terminée, merci à tous!",
       "instructionsP1": "Si vous êtes un(e) étudiant(e) en Informatique, vous recevrez un courriel de notre part détaillant les instructions de vote pour cette élection, ainsi qu’un lien pour voter.",
@@ -56,8 +56,9 @@
       "INTE": "VP Informatique"
     },
     "candidatesPage": {
-      "subtitle": "Vous pouvez accéder aux plateformes des candidats pour le mandat ___-___ ci-dessous.",
-      "last": "(Justified) French Platform here"
+      "subtitle": "Vous pouvez accéder aux plateformes des candidats pour le mandat 22-23 ci-dessous.",
+      "last": "(Justified) French Platform here",
+      "moore": ""
     }
   }
 }
