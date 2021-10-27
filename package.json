@@ -46,7 +46,7 @@
   },
   "scripts": {
     "react:start": "react-scripts start",
-    "build": "react-scripts build",
+    "build": "react-scripts --openssl-legacy-provider build",
     "start": "node server.js",
     "dev": "concurrently \"nodemon server.js\" \"yarn run react:start\"",
     "heroku-postbuild": "yarn install && yarn run build",
