@@ -65,21 +65,23 @@ const Candidates = (props: Props) => {
         <div className="candidates">
           {Object.keys(candidatesData).map((key: string) => (
             <div id={key} key={key}>
-              <Box mt={3}>
-                <h2>{t(`positionName.${key}`)}</h2>
-                {candidatesData[key].map((data: { name: string; val: string }) => (
-                  <Box key={data.val} mt={2}>
-                    <h5>{data.name}</h5>
-                    <Box mt={1}>
-                      {/** @requires images to be in JPG format */}
-                      <img alt={data.name} key={data.name} className={classes.image} src={`/candidates/${data.val}.jpg`} />
+              {candidatesData[key].length > 0 && (
+                <Box mt={3}>
+                  <h2>{t(`positionName.${key}`)}</h2>
+                  {candidatesData[key].map((data: { name: string; val: string }) => (
+                    <Box key={data.val} mt={2}>
+                      <h5>{data.name}</h5>
+                      <Box mt={1}>
+                        {/** @requires images to be in JPG format */}
+                        <img alt={data.name} key={data.name} className={classes.image} src={`/candidates/${data.val}.jpg`} />
+                      </Box>
+                      <Box mt={1}>
+                        <p>{t(`candidatesPage.${data.val}`)}</p>
+                      </Box>
                     </Box>
-                    <Box mt={1}>
-                      <p>{t(`candidatesPage.${data.val}`)}</p>
-                    </Box>
-                  </Box>
-                ))}
-              </Box>
+                  ))}
+                </Box>
+              )}
             </div>
           ))}
         </div>

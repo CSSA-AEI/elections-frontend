@@ -154,18 +154,12 @@ const Vote = (props: Props) => {
   /**
    * @var disableSubmit Unlocks the submit button when the user has filled out their ballot
    */
-  const disableSubmit =
-    !exec.PRES ||
-    !exec.FNCE ||
-    !exec.ACDM ||
-    !exec.SOCL ||
-    !exec.COMS ||
-    !exec.INTR ||
-    !exec.EXTR ||
-    !exec.PHIL ||
-    !exec.EQUT ||
-    !exec.EXAF ||
-    !exec.INTE;
+  const disableSubmit = () => {
+    for (const key in candidatesData) {
+      if (candidatesData[key] && candidatesData[key].length !== 0 && !exec[key]) return true;
+    }
+    return false;
+  };
 
   return (
     <div>
@@ -181,22 +175,26 @@ const Vote = (props: Props) => {
             {Object.keys(candidatesData).length !== 0 && (
               <FormControl key="fControl" component="fieldset">
                 {Object.keys(exec).map((key: string) => (
-                  <Box key={key} mt={3}>
-                    <h3>{t(`positionName.${key}`)}</h3>
-                    <RadioGroup aria-label={key} name={key} value={exec[key]} onChange={handleChange}>
-                      {candidatesData[key].map((data: { name: string; val: string }) => (
-                        <FormControlLabel key={data.name} value={data.val} control={<Radio />} label={<p>{data.name}</p>} />
-                      ))}
-                      <FormControlLabel key="abstain" value="abstain" control={<Radio />} label={<p>{t('votePage.abstain')}</p>} />
-                    </RadioGroup>
-                  </Box>
+                  <div id={key} key={key}>
+                    {candidatesData[key].length > 0 && (
+                      <Box mt={3}>
+                        <h3>{t(`positionName.${key}`)}</h3>
+                        <RadioGroup aria-label={key} name={key} value={exec[key]} onChange={handleChange}>
+                          {candidatesData[key].map((data: { name: string; val: string }) => (
+                            <FormControlLabel key={data.name} value={data.val} control={<Radio />} label={<p>{data.name}</p>} />
+                          ))}
+                          <FormControlLabel key="abstain" value="abstain" control={<Radio />} label={<p>{t('votePage.abstain')}</p>} />
+                        </RadioGroup>
+                      </Box>
+                    )}
+                  </div>
                 ))}
               </FormControl>
             )}
           </Container>
           <Box mt={4}>
             {!isSending && (
-              <Button variant="outlined" className={classes.submit} color="primary" onClick={handleClick} disabled={disableSubmit}>
+              <Button variant="outlined" className={classes.submit} color="primary" onClick={handleClick} disabled={disableSubmit()}>
                 {t('votePage.submit')}
               </Button>
             )}

@@ -65,11 +65,15 @@ const VoteBallot = (props: Props) => {
             {Object.keys(candidatesData).length !== 0 &&
               Object.keys(candidatesData).map((key: string) => (
                 <div key={key}>
-                  <b>{t(`positionName.${key}`)}</b>
-                  <p>
-                    {candidatesData[key].filter((elem: { name: string; val: string }) => elem.val === props.ballot[key])[0]?.name ||
-                      t('votePage.abstain')}
-                  </p>
+                  {candidatesData[key].length > 0 && (
+                    <div>
+                      <b>{t(`positionName.${key}`)}</b>
+                      <p>
+                        {candidatesData[key].filter((elem: { name: string; val: string }) => elem.val === props.ballot[key])[0]?.name ||
+                          t('votePage.abstain')}
+                      </p>
+                    </div>
+                  )}
                 </div>
               ))}
             <h3>{t('votesuccessPage.thankYou')}</h3>

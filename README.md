@@ -11,8 +11,8 @@ Proxy Servery layer built with `Node js`, `Express`, and `Request`.
 ## Quick Setup
 
 - Set up `.env`, as per the `.env.example` file (contact it@cssa-aei.ca for assistance)
-- Run `yarn install`
-- Run `yarn develop`
+- Run `yarn install` (requires `node 17.0.1`)
+- Run `yarn dev`
 
 ## React Components
 

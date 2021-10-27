@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 // Import MUI Components
 import WhereToVoteOutlinedIcon from '@material-ui/icons/WhereToVoteOutlined';
@@ -31,6 +31,15 @@ const styles = () =>
 const LandingPage = (props: Props) => {
   const [t] = useTranslation();
   const { classes } = props;
+  const [votingStatus, setVotingStatus]: any = useState(undefined);
+
+  useEffect(() => {
+    fetch('/proxy/vote/status')
+      .then(data => data.json())
+      .then(res => {
+        if (res.status === 200) setVotingStatus(res.data);
+      });
+  }, []);
 
   return (
     <Container component="main" maxWidth="sm">
@@ -40,7 +49,7 @@ const LandingPage = (props: Props) => {
       </Avatar>
       <Box mt={4}>
         {/** @see (en||fr).json for different election status messages (voteStart, voteOpen, voteEnd) */}
-        <h2>{t('landingPage.voteStart')}</h2>
+        {votingStatus && <h2>{t(`landingPage.${votingStatus}`)}</h2>}
       </Box>
       <Box mt={4}>
         <p>

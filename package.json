@@ -48,7 +48,7 @@
     "react:start": "react-scripts start",
     "build": "react-scripts build",
     "start": "node server.js",
-    "develop": "concurrently \"nodemon server.js\" \"yarn run react:start\"",
+    "dev": "concurrently \"nodemon server.js\" \"yarn run react:start\"",
     "heroku-postbuild": "yarn install && yarn run build",
     "prettier": "prettier --write src/**/*.ts{,x}",
     "lint": "tsc --noEmit && eslint --fix src/**/*.ts{,x}"
@@ -57,7 +57,7 @@
     "extends": "react-app"
   },
   "engines": {
-    "node": "^16.9.1",
+    "node": "17.0.1",
     "yarn": "^1.22.10",
     "npm": "^7.3.0"
   },
