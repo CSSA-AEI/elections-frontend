@@ -11,14 +11,14 @@
         "unauthorized": "Unauthorized",
         "alreadyVoted": "User has already voted on ",
         "tryagain": "Election Server unresponsive - we apologize for the inconvenience.\nWe're working on it!",
-        "vote-has-not-started": "Vote Start Date: October 29 @ 9AM",
+        "vote-has-not-started": "Voting period has not started yet",
         "vote-has-ended": "Voting period has ended",
         "other": "Error logging in please try again",
         "warning": "Woah, you shouldn't be getting this...We'll look into it!"
       }
     },
     "landingPage": {
-      "voteStart": "Voting starts on October 29 at 9AM!",
+      "voteStart": "Voting hasn't started yet, come back later!",
       "voteOpen": "Voting is open!",
       "voteEnd": "Voting has ended, thank you to all participants!",
       "instructionsP1": "If you are a student in Computer Science, you will receive an email from us detailing the voting instructions for this election, along with a voting link.",
@@ -56,8 +56,8 @@
       "INTE": "VP Information Technology"
     },
     "candidatesPage": {
-      "subtitle": "You can access the platforms of the candidates running for the CSSA 21-22 term below.",
-      "last": "(Justified) Platform here",
+      "subtitle": "You can access the platforms of the candidates running below.",
+      "last": "(Justified) Platform here \n\n This is a new line",
       "moore": "Hello! My name is Michel Moore and I am running for the position of VP Communications for the Computer Science Student Association (CSSA).\n\nAs Vice-President of Communications, bilingualism is my top priority. I will continue to ensure that all correspondence is bilingual. I also plan to translate the constitution and revamp our social media presence."
     }
   }

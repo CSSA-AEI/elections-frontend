@@ -11,14 +11,14 @@
         "unauthorized": "Non autorisé",
         "alreadyVoted": "L'utilisateur a déjà voté le ",
         "tryagain": "Le serveur électoral ne répond pas - Désolé de l'inconvénient.\nOn va s'en occuper!",
-        "vote-has-not-started": "Début de vote: 29 Octobre à 9h",
+        "vote-has-not-started": "La période de vote n'a pas encore commencé",
         "vote-has-ended": "La période de vote est terminée",
         "other": "Erreur de connexion, veuillez réessayer",
         "warning": "Woah, qu'est-ce qui s'est passé? On va s'en occuper..."
       }
     },
     "landingPage": {
-      "voteStart": "La période de vote ouvre le 29 Octobre à 9h!",
+      "voteStart": "La période de vote n'a pas encore commencé, revenez plus tard!",
       "voteOpen": "La période de vote est ouverte!",
       "voteEnd": "La période de vote est terminée, merci à tous!",
       "instructionsP1": "Si vous êtes un(e) étudiant(e) en Informatique, vous recevrez un courriel de notre part détaillant les instructions de vote pour cette élection, ainsi qu’un lien pour voter.",
@@ -56,8 +56,8 @@
       "INTE": "VP Informatique"
     },
     "candidatesPage": {
-      "subtitle": "Vous pouvez accéder aux plateformes des candidats pour le mandat 21-22 ci-dessous.",
-      "last": "(Justified) French Platform here",
+      "subtitle": "Vous pouvez accéder aux plateformes des candidats ci-dessous.",
+      "last": "(Justified) French Platform here \n\n This is a new line",
       "moore": "Bonjour! Je m'appelle Michel Moore et je me présente au poste de VP Communication de l'Association des Étudiants en Informatique (AÉI).\n\nEn tant que vice-président des communications, le bilinguisme est ma priorité principale. Je continuerai à m'assurer que toute la correspondance est bilingue. Je prévois également de traduire la constitution et de renouveler notre présence sur les médias sociaux."
     }
   }
