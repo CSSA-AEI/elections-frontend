@@ -68,6 +68,4 @@ FNCE: [{ name: 'Omer Abubaker', val: 'abubaker' }]; // `val` is always the candi
 
 2. Add the image of each candidate under the `public/candidates/` directory. **The format must be JPG, and must be passed through the following image resizer first:** https://www.onlineresizeimage.com/instagram-profile-picture-resizer/. If the resizer says `image is too small`, then increase the pixel size first through this website: https://www.resizepixel.com/.
 
-3. Read over all the `en.json` and `fr.json` files and make sure that the election dates are properly included (**no "\_\_\_" underscores left anywhere**).
-
-4. Verify that the environment variables are correctly set up in the Production & Development Environments of the [elections-frontend Heroku Pipeline](https://dashboard.heroku.com/pipelines/6a561515-c587-4924-a53d-c787f75db2ce).
+3. Verify that the environment variables are correctly set up in the Production & Development Environments of the [elections-frontend Heroku Pipeline](https://dashboard.heroku.com/pipelines/6a561515-c587-4924-a53d-c787f75db2ce).
