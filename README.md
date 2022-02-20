@@ -1,7 +1,3 @@
-[![dependencies Status](https://status.david-dm.org/gh/cssa-aei/elections-frontend.svg)](https://david-dm.org/cssa-aei/elections-frontend)
-[![devDependencies Status](https://status.david-dm.org/gh/cssa-aei/elections-frontend.svg?type=dev)](https://david-dm.org/cssa-aei/elections-frontend?type=dev)
-[![peerDependencies Status](https://status.david-dm.org/gh/cssa-aei/elections-frontend.svg?type=peer)](https://david-dm.org/cssa-aei/elections-frontend?type=peer)
-
 # Elections Frontend
 
 Client layer built with `React TSX`, `Material-UI`, and `i18n`.
@@ -11,7 +7,7 @@ Proxy Servery layer built with `Node js`, `Express`, and `Request`.
 ## Quick Setup
 
 - Set up `.env`, as per the `.env.example` file (contact it@cssa-aei.ca for assistance)
-- Run `yarn install` (requires `node 17.0.1`)
+- Run `yarn install` (requires `node ^17.0.1` & `yarn ^1.22.10`)
 - Run `yarn dev`
 
 ## React Components

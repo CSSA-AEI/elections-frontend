@@ -57,7 +57,7 @@
     "extends": "react-app"
   },
   "engines": {
-    "node": "17.0.1",
+    "node": "^17.0.1",
     "yarn": "^1.22.10",
     "npm": "^7.3.0"
   },

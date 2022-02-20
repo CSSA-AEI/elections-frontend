@@ -59,7 +59,7 @@ const VoteBallot = (props: Props) => {
         <div className="votesuccess">
           <div className="thankyou">
             <h3>
-              {t('votesuccessPage.voteDate')} {props.voteTime}
+              {t('votesuccessPage.voteTime')} {props.voteTime}
             </h3>
             {Object.keys(candidatesData).length === 0 && <CircularProgress />}
             {Object.keys(candidatesData).length !== 0 &&

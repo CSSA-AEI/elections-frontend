@@ -38,7 +38,7 @@
       "abstain": "Abstention" 
     },
     "votesuccessPage": {
-      "voteDate": "Date de vote\n",
+      "voteTime": "Temps de vote\n",
       "thankYou": "Merci!",
       "return": "Retourner à la page d'accueil"
     },
