@@ -74,6 +74,9 @@ const Candidates = (props: Props) => {
                       <Box mt={1}>
                         {/** @requires images to be in JPG format */}
                         <img alt={data.name} key={data.name} className={classes.image} src={`/candidates/${data.val}.jpg`} />
+
+                        {/** @note Enable only if running Demo service */}
+                        {/* <img alt={data.name} key={data.name} className={classes.image} src={`/candidates/demo/${data.val}.jpg`} /> */}
                       </Box>
                       <Box mt={1}>
                         <p>{t(`candidatesPage.${data.val}`) != `candidatesPage.${data.val}` ? t(`candidatesPage.${data.val}`) : ""}</p>
