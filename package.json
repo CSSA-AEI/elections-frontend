@@ -49,7 +49,7 @@
     "build": "react-scripts build",
     "start": "node server.js",
     "dev": "concurrently \"nodemon server.js\" \"yarn run react:start\"",
-    "heroku-postbuild": "yarn install && yarn run build",
+    "heroku-postbuild": "react-scripts --openssl-legacy-provider build",
     "prettier": "prettier --write src/**/*.ts{,x}",
     "lint": "tsc --noEmit && eslint --fix src/**/*.ts{,x}"
   },
