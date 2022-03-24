@@ -79,7 +79,7 @@ const Candidates = (props: Props) => {
                         {/* <img alt={data.name} key={data.name} className={classes.image} src={`/candidates/demo/${data.val}.jpg`} /> */}
                       </Box>
                       <Box mt={1}>
-                        <p>{t(`candidatesPage.${data.val}`) != `candidatesPage.${data.val}` ? t(`candidatesPage.${data.val}`) : ""}</p>
+                        <p>{t(`candidatesPage.${data.val}`) != `candidatesPage.${data.val}` ? t(`candidatesPage.${data.val}`) : ''}</p>
                       </Box>
                     </Box>
                   ))}

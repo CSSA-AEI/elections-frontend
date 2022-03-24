@@ -32,14 +32,12 @@
 
 .nav {
   &--image {
-    height: 128px;
-    width: 128px;
-    padding: 24px;
+    width: 10em;
+    padding: 10px;
 
     @media all and (max-width: $medium) {
-      height: 64px;
-      width: 64px;
-      padding: 6px;
+      width: 5em;
+      padding: 5px;
     }
   }
 
