@@ -12,7 +12,7 @@ import { useTranslation } from 'react-i18next';
 const NavBar = () => {
   const [t, i18n] = useTranslation();
   // Fetch the current language being used ('en'/'fr')
-  const lang = ['en', 'en-CA'].includes(i18n.language) ? 'en' : 'fr';
+  const lang = i18n.language.includes('fr') ? 'fr' : 'en';
 
   // Fetch the user's unique voting sha256 value (part of their unique voting link)
   const path = window.location.pathname.split('/');
