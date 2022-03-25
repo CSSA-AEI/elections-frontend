@@ -39,7 +39,7 @@ const NavBar = () => {
           </a>
         </div>
         <div style={{ width: 'auto', display: 'inline-block' }}>
-          <h1 className="nav--title">{t('general.title')}</h1>
+          <h1 style={{ fontSize: 28 }} className="nav--title">{t('general.title')}</h1>
         </div>
         <Container component="div" maxWidth="md" className="navbar-nav--items">
           <Button size="large" to={sha ? '/vote/' + sha : '/'} component={Link}>

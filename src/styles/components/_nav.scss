@@ -32,13 +32,8 @@
 
 .nav {
   &--image {
-    width: 8em;
-    padding: 6px;
-
-    @media all and (max-width: $medium) {
-      width: 3em;
-      padding: 2px;
-    }
+    width: 6em;
+    padding: 3px;
   }
 
   &--title {
