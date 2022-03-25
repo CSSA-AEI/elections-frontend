@@ -20,8 +20,8 @@ const styles = () =>
       margin: 'auto',
     },
     image: {
-      height: '20%',
-      width: '20%',
+      height: '25%',
+      width: '25%',
       borderRadius: '50%',
     },
   });
