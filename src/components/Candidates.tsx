@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useTranslation } from 'react-i18next';
+import { useTranslation, Trans } from 'react-i18next';
 // Import Material-UI Components
 import { Container, withStyles, createStyles, Box, CssBaseline, Avatar, CircularProgress } from '@material-ui/core';
 import { default as MUILink } from '@material-ui/core/Link';
@@ -79,7 +79,9 @@ const Candidates = (props: Props) => {
                         {/* <img alt={data.name} key={data.name} className={classes.image} src={`/candidates/demo/${data.val}.jpg`} /> */}
                       </Box>
                       <Box mt={1}>
-                        <p>{t(`candidatesPage.${data.val}`) != `candidatesPage.${data.val}` ? t(`candidatesPage.${data.val}`) : ''}</p>
+                        <p>
+                          <Trans i18nKey={t(`candidatesPage.${data.val}`)} />
+                        </p>
                       </Box>
                     </Box>
                   ))}
