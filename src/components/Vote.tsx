@@ -176,7 +176,7 @@ const Vote = (props: Props) => {
               <FormControl key="fControl" component="fieldset">
                 {Object.keys(exec).map((key: string) => (
                   <div id={key} key={key}>
-                    {candidatesData[key].length > 0 && (
+                    {candidatesData[key]?.length > 0 && (
                       <Box mt={3}>
                         <h3>{t(`positionName.${key}`)}</h3>
                         <RadioGroup aria-label={key} name={key} value={exec[key]} onChange={handleChange}>

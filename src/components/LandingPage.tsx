@@ -32,12 +32,18 @@ const LandingPage = (props: Props) => {
   const [t] = useTranslation();
   const { classes } = props;
   const [votingStatus, setVotingStatus] = useState('');
+  const [startDateString, setStartDateString] = useState('');
+  const [endDateString, setEndDateString] = useState('');
 
   useEffect(() => {
     fetch('/proxy/vote/status')
       .then(data => data.json())
       .then(res => {
-        if (res.status === 200) setVotingStatus(res.data);
+        if (res.status === 200) {
+          setVotingStatus(res.votingStatus);
+          setStartDateString(res.startDateString);
+          setEndDateString(res.endDateString);
+        }
       });
   }, []);
 
@@ -49,7 +55,12 @@ const LandingPage = (props: Props) => {
       </Avatar>
       <Box mt={4}>
         {/** @see (en||fr).json for different election status messages (voteStart, voteOpen, voteEnd) */}
-        {votingStatus !== '' && <h2>{t(`landingPage.${votingStatus}`)}</h2>}
+        {votingStatus !== '' && (
+          <span>
+            <h2>{t(`landingPage.${votingStatus}`)}</h2>
+            <h4>{startDateString + ' - ' + endDateString}</h4>
+          </span>
+        )}
       </Box>
       <Box mt={4}>
         <p>
