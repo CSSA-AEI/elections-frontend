@@ -57,8 +57,9 @@
     "extends": "react-app"
   },
   "engines": {
-    "node": ">=17.x",
-    "yarn": "<2.x"
+    "node": ">=17.0.0",
+    "yarn": ">=1.22.10",
+    "npm": ">=7.3.0"
   },
   "proxy": "http://localhost:3500",
   "browserslist": {
