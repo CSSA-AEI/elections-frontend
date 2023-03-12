@@ -45,7 +45,7 @@
     "sass": "^1.32.0"
   },
   "scripts": {
-    "react:start": "react-scripts start",
+    "react:start": "react-scripts --openssl-legacy-provider start",
     "build": "react-scripts --openssl-legacy-provider build",
     "start": "node server.js",
     "dev": "concurrently \"nodemon server.js\" \"yarn run react:start\"",
