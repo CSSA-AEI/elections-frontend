@@ -68,6 +68,7 @@ const Vote = (props: Props) => {
     PHIL: '',
     EQUT: '',
     EXAF: '',
+    LGST: '',
     INTE: '',
   });
 
