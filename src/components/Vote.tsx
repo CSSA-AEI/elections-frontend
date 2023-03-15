@@ -62,7 +62,7 @@ const Vote = (props: Props) => {
     FNCE: '',
     ACDM: '',
     SOCL: '',
-    // COMS: '',
+    COMS: '',
     INTR: '',
     EXTR: '',
     PHIL: '',

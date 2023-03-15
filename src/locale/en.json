@@ -21,7 +21,7 @@
       "voteStart": "Voting hasn't started yet!",
       "voteOpen": "Voting is open!",
       "voteEnd": "Voting has ended, thank you to all participants!",
-      "instructionsP1": "If you are a student in Computer Science, you will receive an email from us detailing the voting instructions & a voting link.",
+      "instructionsP1": "If you are a student in Computer Science, you will receive an email from us detailing the voting instructions along with voting link.",
       "instructionsP2": "Use your unique voting link to submit your ballot."
     },
     "errorPage": {
